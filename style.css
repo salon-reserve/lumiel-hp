@@ -608,3 +608,56 @@ a {
     font-size: 2.4rem;
   }
 }
+/* ===== スマホ版：画像上タイトル・見出し調整 ===== */
+@media screen and (max-width: 760px) {
+  .image-section {
+    padding: 28px 0 18px;
+  }
+
+  .image-title-wrap {
+    padding-top: 0;
+  }
+
+  .page-mini-title {
+    position: static;
+    margin: 0 0 10px;
+    padding-left: 4px;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+    color: #d88b95;
+    font-weight: 700;
+  }
+
+  .section-soft {
+    padding: 36px 0 44px;
+  }
+
+  .two-column {
+    text-align: center;
+    gap: 24px;
+  }
+
+  .badge-pill {
+    margin-bottom: 18px;
+  }
+
+  .big-title {
+    text-align: center;
+    font-size: 2.15rem;
+    line-height: 1.45;
+    letter-spacing: 0.02em;
+  }
+
+  .lead {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 2;
+    margin: 18px auto 0;
+    max-width: 92%;
+  }
+
+  .price-badge {
+    margin-top: 18px;
+  }
+}
