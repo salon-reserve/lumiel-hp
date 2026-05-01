@@ -661,3 +661,108 @@ a {
     margin-top: 18px;
   }
 }
+
+/* ===== 予約フォーム・HP制作 スマホ版デザイン調整 ===== */
+.sp-only {
+  display: none;
+}
+
+@media screen and (max-width: 760px) {
+  .page-visual-section {
+    padding: 26px 0 16px !important;
+  }
+
+  .image-title-wrap {
+    padding-top: 0 !important;
+  }
+
+  .page-mini-title {
+    position: static !important;
+    display: block !important;
+    margin: 0 0 10px !important;
+    padding-left: 4px !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.03em !important;
+    color: #d88b95 !important;
+    font-weight: 700 !important;
+  }
+
+  .page-intro-section {
+    padding: 34px 0 46px !important;
+  }
+
+  .page-intro-column {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    text-align: center !important;
+  }
+
+  .page-intro-text {
+    text-align: center !important;
+  }
+
+  .page-intro-text .badge-pill {
+    display: inline-block !important;
+    margin: 0 auto 18px !important;
+  }
+
+  .page-main-title {
+    text-align: center !important;
+    font-size: 2.05rem !important;
+    line-height: 1.45 !important;
+    letter-spacing: 0.02em !important;
+    margin: 0 auto 18px !important;
+  }
+
+  .page-intro-text .lead {
+    text-align: center !important;
+    margin: 0 auto !important;
+    max-width: 92% !important;
+    font-size: 1rem !important;
+    line-height: 2 !important;
+  }
+
+  .price-badge {
+    margin-top: 8px !important;
+  }
+
+  .sp-only {
+    display: block;
+  }
+}
+
+/* ===== HP制作ページ スマホ文字被り修正 ===== */
+@media screen and (max-width: 760px) {
+  .page-main-title {
+    font-size: 1.85rem !important;
+    line-height: 1.65 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .page-intro-text .lead {
+    line-height: 1.9 !important;
+  }
+
+  .badge-pill {
+    line-height: 1.6 !important;
+    white-space: normal !important;
+  }
+}
+
+/* ===== PC：左上タイトルを画像の外へ出す ===== */
+@media screen and (min-width: 761px) {
+  .page-mini-title {
+    position: static !important;
+    display: block !important;
+    margin: 0 0 14px !important;
+    padding-left: 4px !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  .image-title-wrap {
+    padding-top: 0 !important;
+  }
+}
