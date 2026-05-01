@@ -28,6 +28,7 @@ body {
   color: var(--text);
   font-family: 'Noto Sans JP', sans-serif;
   line-height: 1.75;
+  overflow-x: hidden;
 }
 
 img {
@@ -45,11 +46,12 @@ a {
   margin: 0 auto;
 }
 
+/* header */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(252, 248, 245, 0.9);
+  background: rgba(252, 248, 245, 0.92);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(232, 219, 213, 0.9);
 }
@@ -67,6 +69,7 @@ a {
   font-size: clamp(2.3rem, 4vw, 3.5rem);
   line-height: 1;
   color: #6d534d;
+  flex-shrink: 0;
 }
 
 .desktop-nav {
@@ -93,47 +96,44 @@ a {
   color: #fff;
   font-weight: 700;
   box-shadow: 0 12px 24px rgba(191, 127, 139, 0.22);
+  flex-shrink: 0;
 }
 
 .menu-toggle {
   display: none;
-  width: 62px;
-  height: 62px;
+  width: 56px;
+  height: 56px;
   border: 2px solid var(--rose-deep);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.82);
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: var(--shadow);
 }
 
 .menu-toggle span {
   display: block;
-  width: 28px;
+  width: 24px;
   height: 2px;
-  border-radius: 999px;
   background: var(--rose-deep);
-  margin: 6px 0;
+  margin: 4px 0;
   transition: 0.25s ease;
 }
 
 .menu-toggle.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(6px) rotate(45deg);
 }
-
 .menu-toggle.active span:nth-child(2) {
   opacity: 0;
 }
-
 .menu-toggle.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .mobile-nav {
   display: none;
   position: fixed;
-  top: 86px;
+  top: 78px;
   right: 16px;
   width: min(320px, calc(100% - 32px));
   padding: 18px;
@@ -141,6 +141,7 @@ a {
   border-radius: 24px;
   background: rgba(255, 251, 248, 0.98);
   box-shadow: 0 26px 46px rgba(90, 63, 56, 0.16);
+  z-index: 9999;
 }
 
 .mobile-nav.active {
@@ -151,12 +152,21 @@ a {
   display: block;
   padding: 14px 8px;
   border-bottom: 1px solid rgba(232, 219, 213, 0.8);
-  color: var(--text);
   font-weight: 600;
 }
 
 .mobile-nav a:last-child {
   border-bottom: none;
+}
+
+/* common */
+.section {
+  padding: 72px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-soft {
+  background: rgba(255, 255, 255, 0.28);
 }
 
 .hero-section {
@@ -167,7 +177,7 @@ a {
   overflow: hidden;
   border: 1px solid rgba(232, 219, 213, 0.85);
   border-radius: 40px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.78), rgba(255,255,255,0.48));
+  background: rgba(255,255,255,0.7);
   box-shadow: var(--shadow);
   padding: 18px;
 }
@@ -178,26 +188,24 @@ a {
   width: 100%;
   border-radius: 28px;
   object-fit: cover;
-  box-shadow: 0 14px 28px rgba(126, 97, 87, 0.08);
   border: 1px solid rgba(232, 219, 213, 0.7);
 }
 
-.wide-visual {
-  max-width: 1400px;
-  margin: 0 auto;
+.image-title-wrap {
+  position: relative;
 }
 
-.section {
-  padding: 72px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.section-soft {
-  background: rgba(255,255,255,0.28);
-}
-
-.page-title-section {
-  padding: 56px 0 20px;
+.page-mini-title {
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  z-index: 2;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #d88b95;
+  letter-spacing: 0.08em;
+  line-height: 1;
 }
 
 .section-heading {
@@ -226,33 +234,157 @@ a {
 .section-heading p {
   margin: 10px 0 0;
   color: var(--sub);
-  font-size: 1.05rem;
 }
 
-.image-title-wrap {
-  position: relative;
+.service-grid,
+.pricing-grid {
+  display: grid;
+  gap: 20px;
 }
 
-.page-mini-title {
-  position: absolute;
-  top: 18px;
-  left: 24px;
-  z-index: 2;
+.service-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.pricing-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.service-card,
+.plan-card,
+.contact-box,
+.feature-box {
+  border: 1px solid rgba(232, 219, 213, 0.9);
+  border-radius: 28px;
+  background: rgba(255,255,255,0.78);
+  box-shadow: var(--shadow);
+}
+
+.service-card {
+  padding: 26px;
+}
+
+.service-card h2 {
+  margin: 0 0 12px;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.plan-card {
+  overflow: hidden;
+}
+
+.plan-card-header {
+  text-align: center;
+  color: #fff;
+  padding: 18px 12px;
+  font-size: 1.7rem;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.light { background: linear-gradient(135deg, #b7a5db, #a18fcf); }
+.standard { background: linear-gradient(135deg, #8ca3bb, #778ea7); }
+.premium { background: linear-gradient(135deg, #d4a56f, #c68f4d); }
+
+.plan-card-body {
+  padding: 24px;
+}
+
+.check-list {
+  list-style: none;
+  padding: 0;
   margin: 0;
-  font-size: 14px;
-  font-weight: 600;
-  color: #d88b95;
-  letter-spacing: 0.08em;
-  line-height: 1;
 }
-@media (max-width: 760px) {
+
+.check-list li {
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--gold-deep);
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.badge-pill {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.85);
+  color: var(--rose-deep);
+  margin-bottom: 14px;
+}
+
+.big-title {
+  margin: 0 0 12px;
+  font-size: clamp(2.5rem, 5vw, 4.3rem);
+  line-height: 1.35;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.big-title .accent {
+  color: var(--rose);
+}
+
+.lead {
+  color: var(--sub);
+}
+
+.price-badge {
+  border-radius: 32px;
+  background: linear-gradient(180deg, #db8f99, #cc7f8c);
+  color: #fff;
+  padding: 24px;
+  text-align: center;
+}
+
+.price-badge strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  line-height: 1;
+  margin: 12px 0;
+}
+
+.badge-white-box {
+  margin-top: 16px;
+  border-radius: 20px;
+  background: #fff;
+  color: #d88996;
+  padding: 14px 16px;
+  font-weight: 700;
+}
+
+.back-link-wrap {
+  text-align: center;
+}
+
+.back-link {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+}
+
+/* mobile */
+@media screen and (max-width: 760px) {
   .desktop-nav,
   .header-btn {
-    display: none;
+    display: none !important;
   }
 
   .menu-toggle {
-    display: flex;
+    display: flex !important;
   }
 
   .header-inner {
@@ -263,18 +395,8 @@ a {
     font-size: 2.4rem;
   }
 
-  .site-header {
-    overflow: visible;
-  }
-
-  .mobile-nav {
-    top: 78px;
-    right: 16px;
-    z-index: 2000;
-  }
-
-  body {
-    overflow-x: hidden;
+  .section {
+    padding: 40px 0;
   }
 
   .hero-card {
@@ -285,6 +407,204 @@ a {
   .hero-image,
   .page-visual-image,
   .home-support-image {
-    border-radius: 20px;
+    border-radius: 18px;
+  }
+
+  .image-title-wrap {
+    padding-top: 14px;
+  }
+
+  .page-mini-title {
+    top: -2px;
+    left: 4px;
+    font-size: 11px;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+  }
+
+  .service-grid,
+  .pricing-grid,
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    margin-bottom: 24px;
+  }
+
+  .section-script {
+    font-size: 2rem;
+  }
+
+  .section-heading h1,
+  .section-heading h2 {
+    font-size: 2rem;
+  }
+
+  .big-title {
+    font-size: 2rem;
+    line-height: 1.45;
+  }
+
+  .price-badge strong {
+    font-size: 3rem;
+  }
+
+  .mobile-nav {
+    top: 76px;
+  }
+}
+
+/* ===== 料金プラン補完 ===== */
+.plan-copy {
+  text-align: center;
+  min-height: 62px;
+  color: var(--sub);
+  margin-bottom: 24px;
+}
+
+.plan-price-wrap {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(232, 219, 213, 0.9);
+  text-align: center;
+}
+
+.plan-price-wrap small {
+  display: block;
+  color: var(--sub);
+  margin-bottom: 6px;
+}
+
+.plan-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5vw, 4.8rem);
+  line-height: 1;
+  margin: 0;
+}
+
+.plan-price span {
+  font-size: 0.5em;
+}
+
+.light-price {
+  color: var(--lavender);
+}
+
+.standard-price {
+  color: var(--blue);
+}
+
+.premium-price {
+  color: #c98a43;
+}
+
+.included-note {
+  margin-top: 24px;
+  padding: 18px 22px;
+  border-radius: 24px;
+  border: 1px solid rgba(232, 219, 213, 0.95);
+  background: rgba(255, 255, 255, 0.72);
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  color: var(--sub);
+}
+
+/* ===== ホーム下部 Contact / Footer 補完 ===== */
+.contact-box {
+  border-radius: 32px;
+  border: 1px solid rgba(232, 219, 213, 0.9);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.contact-card {
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(232, 219, 213, 0.85);
+  background: rgba(255, 255, 255, 0.72);
+  text-align: center;
+}
+
+.contact-script {
+  margin: 0;
+  color: #d6b8ab;
+  font-size: 2.8rem;
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1;
+}
+
+.contact-label,
+.contact-title {
+  margin: 0 0 8px;
+  color: var(--rose-deep);
+  font-weight: 700;
+}
+
+.insta-id {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.contact-sub {
+  margin: 8px 0 0;
+  color: var(--sub);
+}
+
+.footer-brand {
+  text-align: center;
+  padding: 36px 0 0;
+}
+
+.footer-brand p {
+  margin: 0 0 10px;
+  color: var(--sub);
+}
+
+.footer-brand strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: #6d534d;
+  font-weight: 500;
+}
+
+/* ===== スマホ補完 ===== */
+@media screen and (max-width: 760px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-box {
+    padding: 18px;
+  }
+
+  .contact-card {
+    padding: 20px;
+  }
+
+  .included-note {
+    gap: 10px;
+    justify-content: flex-start;
+    font-size: 0.9rem;
+  }
+
+  .plan-copy {
+    min-height: auto;
+  }
+
+  .footer-brand strong {
+    font-size: 2.4rem;
   }
 }
