@@ -245,3 +245,46 @@ a {
   letter-spacing: 0.08em;
   line-height: 1;
 }
+@media (max-width: 760px) {
+  .desktop-nav,
+  .header-btn {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .header-inner {
+    min-height: 76px;
+  }
+
+  .logo {
+    font-size: 2.4rem;
+  }
+
+  .site-header {
+    overflow: visible;
+  }
+
+  .mobile-nav {
+    top: 78px;
+    right: 16px;
+    z-index: 2000;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero-card {
+    padding: 8px;
+    border-radius: 28px;
+  }
+
+  .hero-image,
+  .page-visual-image,
+  .home-support-image {
+    border-radius: 20px;
+  }
+}
